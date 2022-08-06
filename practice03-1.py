@@ -11,6 +11,7 @@ print('Исходный список: ',mylist)
 for i in mylist:
     if i%2: OddNumbers += 1
     else: EvenNumbers += 1
-if EvenNumbers < OddNumbers:
-    print('Четных чисел: ',EvenNumbers)
-else:print('Нечетных чисел: ',OddNumbers)
+if EvenNumbers > OddNumbers:
+    print(f'Четных чисел больше: {EvenNumbers}; сумма всех чисел списка {sum(mylist)} ')
+else:print(f'Нечетных чисел больше: {OddNumbers}; '
+           f'произведение 1 3 и 6 элемента = {mylist[0]*mylist[2]*mylist[5]}')
