@@ -2,3 +2,6 @@
 # Создайте кортеж из случайных 10 чисел.
 # Найдите индексы максимального и
 # минимального элемента
+import random
+mytuple = [random.randint(0,100) for i in range(10)]
+print(mytuple)
