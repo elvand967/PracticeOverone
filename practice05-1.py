@@ -2,14 +2,28 @@
 # С клавиатуры вводится текст,
 # определить, сколько в нём гласных, а сколько согласных.
 # В случае равенства вывести на экран все гласные буквы
-txt = list(input('Введите произвольный текст: '))
-spam = ' \|/!@#$%^&*()_-+=~`<>?[]{};:№%'
-#print(spam)
+txt = input('Введите произвольный текст: ')
+spam = ' \|/!@#$%^&*()_-+=~`<>?[]{};:№%"\'.,'
+txt_gls = ''
 gls = 0
 sgl = 0
 gls_ru = 'ауоыиэяюёе'
 gls_en = 'aeiouy'
 # получим строку всех гласных букв русского и английского алфовина,
 # в том числе в верхнем регистре
-all_gls =list(gls_ru + gls_ru.swapcase() + gls_en + gls_en.swapcase())
-
+all_gls =gls_ru + gls_ru.swapcase() + gls_en + gls_en.swapcase()
+for i in txt:
+    if i in all_gls:
+        gls += 1
+        txt_gls += i
+        continue
+    elif i in spam:
+        continue
+    elif i.isdigit(): # проверяем Состоит ли строка из цифр
+        continue
+    else: sgl +=1
+if gls != sgl:
+    print(f'В введенном тексте: {len(txt)} символов\nГласных букв: {gls}\nСогласных букв: {sgl} ')
+else:
+    print(f'В введенном тексте: {len(txt)} символов\nГласных и согласных букв равное количество: {gls}')
+    print('Гласные буквы: ',set(txt_gls)) # формируем строку с уникальными буквами
