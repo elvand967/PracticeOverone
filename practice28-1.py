@@ -18,7 +18,7 @@ while True:
         n = len(str_num)
         str_num = int(str_num)
         for i in range(n):
-            if str_num % 10:
+            if str_num // 10:
                 digits += 1
         print(f'иследуемое число: {str_num} имеет {digits} разряд(ов)')
         if continuation():
