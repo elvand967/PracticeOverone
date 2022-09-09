@@ -8,4 +8,4 @@ def digit(n):
         i+=1
     return i
 
-print(digit(1235564))
+print(digit(123445564888))
