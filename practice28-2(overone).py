@@ -14,7 +14,6 @@ def triangle(a, b, c):
     p = (a + b + c) / 2
     return math.sqrt(p * (p - a) * (p - b) * (p - c))
 
-
 choice = input("Площадь чего Вас интересует(1-круг,2-прямоугольник, 3 - треугольник): ")
 if choice == '1':
     r = int(input("Введите радиус круга: "))
