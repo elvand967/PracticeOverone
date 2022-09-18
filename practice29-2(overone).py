@@ -7,7 +7,7 @@ class Calc:
     def __init__(self):
         self.vvod()
 
-    def plus(self,a):
+    def plus(self):
         return self.a + self.b
 
     def minus(self):
