@@ -9,21 +9,19 @@ class Calculator():
     def __init__(self): # метод инициализации экземпляров класса после их создания
         self.set_me() # метод ввода mathematical expression (математическое выражение)
 
-    def c_sum(self,a,b):
-        self.x = a + b
-        return print(self.x)
+    def c_sum(self):
+        return print(float(self.me_list[0]) + float(self.me_list[2]))
 
-    def c_sub(self,a,b):
-        self.x = a - b
-        return print(self.x)
+    def c_sub(self):
+        return print(float(self.me_list[0]) - float(self.me_list[2]))
 
-    def c_mult(self, a, b):
-        self.x = a * b
-        return print(self.x)
+    def c_mult(self):
+        return  print(float(self.me_list[0]) * float(self.me_list[2]))
 
-    def c_div(self, a, b):
-        self.x = a / b
-        return print(self.x)
+    def c_div(self):
+        if float(self.me_list[2]) == 0.0:
+            return print('недопустимая операция: деление на "0"')
+        return  print(float(self.me_list[0]) / float(self.me_list[2]))
 
     def set_me(self):
         self.me = input('Введите математическое выражение: ')
@@ -34,26 +32,17 @@ class Calculator():
         self.me = self.me.replace('/', ' / ')
         #self.me = self.me.replace('**', ' ** ') # -???
         self.me_list = re.split('\s+', self.me)
-        self.a = None
-        self.b = None
-        for i in self.me_list:
-            if i.isdigit():
-                if self.a is None:
-                    self.a = float(i)
-                else:
-                    self.b = float(i)
-                    break
-            else: self.mathematical_operator = i
+        self.mathematical_operator = self.me_list[1]
 
     def result(self):
         if self.mathematical_operator == '+':
-            self.c_sum(self.a,self.b)
+            self.c_sum()
         if self.mathematical_operator == '-':
-            self.c_sub(self.a,self.b)
+            self.c_sub()
         if self.mathematical_operator == '*':
-            self.c_mult(self.a,self.b)
+            self.c_mult()
         if self.mathematical_operator == '/':
-            self.c_div(self.a,self.b)
+            self.c_div()
 
 def continuation():
     repeat = input('Продолжить работу (Y/N): ')
