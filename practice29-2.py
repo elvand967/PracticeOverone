@@ -26,10 +26,13 @@ class Calculator():
     def set_me(self):
         self.me = input('Введите математическое выражение: ')
         import re
-        self.me = self.me.replace('+',' + ') # в случае ввода мат.оператора без пробела, обвернем его пробелом
-        self.me = self.me.replace('-', ' - ')
-        self.me = self.me.replace('*', ' * ')
-        self.me = self.me.replace('/', ' / ')
+        for i in self.me:
+            if not i.isdigit():
+                self.me = self.me.replace(i,' '+i+' ')  # в случае ввода мат.оператора без пробела, обвернем его пробелом
+        # self.me = self.me.replace('+',' + ') # в случае ввода мат.оператора без пробела, обвернем его пробелом
+        # self.me = self.me.replace('-', ' - ')
+        # self.me = self.me.replace('*', ' * ')
+        # self.me = self.me.replace('/', ' / ')
         #self.me = self.me.replace('**', ' ** ') # -???
         self.me_list = re.split('\s+', self.me)
         self.mathematical_operator = self.me_list[1]
@@ -53,7 +56,6 @@ def continuation():
 
 while True:
     Cal = Calculator()
-    #print(Cal.result())
     Cal.result()
     if not continuation(): break
 
