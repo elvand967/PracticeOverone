@@ -55,6 +55,16 @@ class Calculator():
         if self.mathematical_operator == '/':
             self.c_div(self.a,self.b)
 
-Cal = Calculator()
-Cal.result()
+def continuation():
+    repeat = input('Продолжить работу (Y/N): ')
+    if repeat.upper() == 'Y' or repeat.upper() == 'Н':
+        return True
+    else:
+        return False
 
+while True:
+    Cal = Calculator()
+    Cal.result()
+    if not continuation(): break
+
+print('Программа завершила свою работу.')
