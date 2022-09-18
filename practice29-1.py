@@ -20,10 +20,13 @@ class Example(): # перевод - пример
 
     def method2(self,a = a, b = b):
         return a+b
+
+    def method3(self):
+        return self.c**self.d
 Ex = Example(7, 9)
 
 print(Ex.method1())
 print(Ex.method1(8))
 print(Ex.method2())
 print(Ex.method2(8,4))
-
+print(Ex.method3())
