@@ -26,7 +26,7 @@ class Calculator():
         return print(self.x)
 
     def set_me(self):
-        self.me = input('Введите математическое выражение:_')
+        self.me = input('Введите математическое выражение: ')
         import re
         self.me = self.me.replace('+',' + ') # в случае ввода мат.оператора без пробела, обвернем его пробелом
         self.me = self.me.replace('-', ' - ')
@@ -64,6 +64,7 @@ def continuation():
 
 while True:
     Cal = Calculator()
+    #print(Cal.result())
     Cal.result()
     if not continuation(): break
 
