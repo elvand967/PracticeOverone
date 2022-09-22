@@ -1,4 +1,4 @@
-# Практическое задание №37-1 (overone)
+# Практическое задание №37 (overone)
 # Класс Human
 # 1. Создайте класс Human
 # 2. Определите для него два статических поля: default_name и default_age.
@@ -43,6 +43,7 @@ if __name__ == '__main__':
     Alex.earn_money(10000)
     Alex.earn_money(5000)
     Alex.info()
+
 # Default name: No name
 # Default age: 0
 # Name: Alex
