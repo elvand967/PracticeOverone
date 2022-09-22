@@ -17,7 +17,6 @@
 # совершать сделку. Если денег слишком мало - нужно вывести предупреждение в консоль. Параметры метода: ссылка
 # на дом и размер скидки
 
-import inspect
 
 class Human:
     default_name = "No name"
@@ -28,9 +27,10 @@ class Human:
         self.age = age
         self.__money = 0
         self.__house = None
-        print(f'Создан объект "{name}", класса "{type(self).__name__}"')
+        print(f'Создан объект класса: {type(self).__name__}')
 
     def info(self):
+        #print(f'class: {type(self).__name__}')
         print(f'Name: {self.name}')
         print(f'Age: {self.age}')
         print(f'Money: {self.__money}')
@@ -41,16 +41,18 @@ class Human:
         print(f'Default name: {Human.default_name}')
         print(f'Default age: {Human.default_age}')
 
-    def earn_money(self, amount): # заработок
+    def earn_money(self, amount): # заработок (увеличиваем баланс счета)
         self.__money += amount
         print(f"Вы заработали {amount}. У Вас {self.__money} денег")
 
     def __make_deal(self, house, price): # учет финансов после покупки дома, статус дома
-        self.__money -= price
-        self.__house = house
+        self.__money -= price # списываем со счета сумму затраченную на покупку дома
+        self.__house = house # запоминаем объект дома
+        print(f'Сделка состоялась!!! Поздравляем с приобретением новой недвижимости: {self.__house}')
 
-    def buy_house(self,house,discount):  # попытка покупки дома
-        price = house.final_price(discount)
+    def buy_house(self,house,discount):  # покупка дома,
+        # принимаем имя переменной с сылкой на экземпляр дома и скидку на его стоимость
+        price = house.final_price(discount) # считаем стоимость дома с учетом скидки
         if price>self.__money:
             print("У Вас недостаточно денег")
         else:
@@ -60,29 +62,32 @@ class House:
     def __init__(self, area, price):
         self._area = area
         self._price = price
+        print(f'Создан объект класса {type(self).__name__}') # вывод на печать имя класса создоваемых объектов
 
     def final_price(self, discount):
         final_price = self._price * (100 - discount) / 100
         return final_price
 
 class SmallHouse(House):
-
     default_area = 40
 
     def __init__(self, price):
         super().__init__(SmallHouse.default_area, price)
-        print(f'Создан объект класса {type(self).__name__}')
+
 
 if __name__ == '__main__':
-    print('!!!Запрос к статической функции "Human.default_info()" еще до создания объекта, для получения значений по умолчанию класса:')
+    print('!!!Запрос к статической функции: Human.default_info(), еще до создания объекта, для получения значений по умолчанию класса:')
     Human.default_info()
     Alex = Human('Alex', 25)
-    print(f'!!!Запрос к обычному методу "Alex.info()" экземпляря класса "{type(Alex).__name__}" для получения значений аргументов объекта:')
+    print(f'!!!Запрос к обычному методу "Alex.info()" экземпляра класса: {type(Alex).__name__}, для получения значений аргументов объекта:')
     Alex.info()
     drozd = SmallHouse(10000)
-    print('!!!Попытка купить домик в Дроздах используя метод "Alex.buy_house(drozd,10)")')
+    print('!!!Попытка купить домик в Дроздах используя метод: Alex.buy_house(drozd,10))')
     Alex.buy_house(drozd,10)
+    print('!!!Усиленно работаем, работаем, работаем...')
     Alex.earn_money(10000)
     Alex.earn_money(5000)
+    print('!!!Вторая попытка купить домик в Дроздах используя метод: Alex.buy_house(drozd,10))')
     Alex.buy_house(drozd, 10)
+    print('!!!Еше раз поинтересуемся положением дел у Alex:')
     Alex.info()
