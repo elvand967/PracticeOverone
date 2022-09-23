@@ -18,4 +18,4 @@ if b>c:
     print(f)
 else:
     r = a[0]*a[2]*a[5]
-    print(r)
+    print(r) # 30240
