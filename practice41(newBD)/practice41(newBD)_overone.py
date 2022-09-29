@@ -13,8 +13,12 @@ cursor.execute('''INSERT into tab_1(col_1,col_2,col_3) VALUES('hello','world',?)
 conn.commit()
 cursor.execute('''SELECT*FROM tab_1''')
 k = cursor.fetchall()
-print(k) # [(1, 'hello', 'world', 41)]
+# после 3-х запусков кода:
+print(k) # [(1, 'hello', 'world', 11), (2, 'hello', 'world', 22), (3, 'hello', 'world', 33)]
 for i in k:
     i = list(i)
     h = 0
-    print(' '.join(str(h) for h in i)) # 1 hello world 41
+    print(' '.join(str(h) for h in i))
+# 1 hello world 11
+# 2 hello world 22
+# 3 hello world 33
