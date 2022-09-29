@@ -19,4 +19,13 @@ conn.commit()
 cur.execute('''SELECT* FROM new_tablBD''')  # создаем запрос всех полей
 field = cur.fetchall()
 print(field)
-
+# после 3-х запусков кода
+# [(1, 'practical', 'task', 39), (2, 'practical', 'task', 40), (3, 'practical', 'task', 41)]
+for i in field:
+    s = ''
+    for n in range (len(i)):
+        s =s + ' ' + str(i[n])
+    print(s)
+#  1 practical task 39
+#  2 practical task 40
+#  3 practical task 41
